@@ -2,7 +2,7 @@ name: Testing github actions
 
 on: 
   push:
-    branches:
+    branche:
       - master
 
       jobs: 
