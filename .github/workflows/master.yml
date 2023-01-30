@@ -1,23 +1,23 @@
-name: Testing github actions
+name: Testing github action
 
-on: 
+on:
   push:
-    branche:
+    branches:
       - master
 
-      jobs: 
-        deploy: 
-          runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-          steps: 
-            - name: Checkout code
-              uses: action/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-            - name: Deploy to shared hosting
-              uses: Samkirkland/FTP-Deploy-Action@4.3.0
-              with: 
-                server: ${{ secrets.FTP_SERVER }}
-                username: ${{ secrets.FTP_USERNAME}}
-                password: ${{ secrets.FTP_PASSWORD}}
-                local-dir: ./
-                remote-dir: /public_html/fixit.pisco.name.ng
+    - name: Deploy to shared hosting
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        remote-dir: /public_html/fixit.pisco.name.ng
